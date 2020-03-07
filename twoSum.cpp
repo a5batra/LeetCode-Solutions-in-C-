@@ -8,7 +8,7 @@
 
 class Solution {
 public:
-    std::vector<int> twoSum(std::vector<int>& nums, int target) {
+    static std::vector<int> twoSum(std::vector<int>& nums, int target) {
         int len = nums.size();
         std::vector<int> indices(2);
         std::unordered_map<int, int> numToIdx;
@@ -24,7 +24,7 @@ public:
         return indices;
     }
 
-    void printVector(std::vector<int>& nums) {
+    static void printVector(std::vector<int>& nums) {
         int n = nums.size();
 
         for(int i = 0; i < n; ++i)
@@ -39,20 +39,18 @@ int main() {
     std::string line;
     std::vector<int> indices;
     std::vector<int> numbers;
-    Solution obj;
 
     std::cout << "Enter the numbers separated by spaces: " << std::endl;
     std::getline(std::cin, line);
     std::istringstream stream(line);
     while(stream >> number)
         numbers.push_back(number);
-
     std::cout << "Enter the target value: " << std::endl;
     std::cin >> target;
 
-    indices = obj.twoSum(numbers, target);
+    indices = Solution::twoSum(numbers, target);
     std::cout << "The indices whose value adds up to target: " << std::endl;
-    obj.printVector(indices);
+    Solution::printVector(indices);
 
     return 0;
 }
