@@ -1,6 +1,9 @@
 //
-// Created by ankitb on 2/28/20.
+// Created by Ankit Batra on 2/28/20.
 //
+/* Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice. */
+
 #include <iostream>
 #include <sstream>
 #include <vector>
@@ -14,7 +17,7 @@ public:
         std::unordered_map<int, int> numToIdx;
 
         for(int i = 0; i < len; ++i) {
-            if(numToIdx.find(target - nums[i]) != numToIdx.end()) {
+            if (numToIdx.find(target - nums[i]) != numToIdx.end()) {
                 indices[0] = numToIdx[target - nums[i]];
                 indices[1] = i;
             }
@@ -43,7 +46,7 @@ int main() {
     std::cout << "Enter the numbers separated by spaces: " << std::endl;
     std::getline(std::cin, line);
     std::istringstream stream(line);
-    while(stream >> number)
+    while (stream >> number)
         numbers.push_back(number);
     std::cout << "Enter the target value: " << std::endl;
     std::cin >> target;
