@@ -31,7 +31,7 @@ int main() {
 
     result = Solution::isPalindrome(num);
 
-    if(result)
+    if (result)
         std::cout << num << " is a palindrome number." << std::endl;
     else
         std::cout << num << " is not a palindrome number." << std::endl;
