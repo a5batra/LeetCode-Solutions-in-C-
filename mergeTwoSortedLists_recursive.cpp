@@ -1,5 +1,5 @@
 //
-// Created by Ankit Batra on 3/13/20.
+// Created by Ankit Batra on 3/27/20.
 //
 
 /* Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together
@@ -11,8 +11,7 @@
 struct ListNode {
     int val;
     ListNode* next;
-    ListNode(int x) : val(x), next(nullptr) {
-    }
+    ListNode(int x) : val(x), next(nullptr) {}
 };
 
 class Solution {
@@ -20,7 +19,7 @@ public:
     static void printLinkedList(ListNode* head) {
         if (head == nullptr) return;
         ListNode* temp = head;
-        while (temp != nullptr) {
+        while(temp != nullptr) {
             std::cout << temp->val << " ";
             temp = temp->next;
         }
@@ -39,40 +38,16 @@ public:
     }
     static ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
         if (l1 == nullptr) return l2;
-        if (l2 == nullptr) return l1;
+        else if (l2 == nullptr) return l1;
 
-        ListNode* head = l1;
-
-        if (l1->val <= l2->val) {
-            head = l1;
-            l1 = l1->next;
+        else if (l1->val <= l2->val) {
+            l1->next = mergeTwoLists(l1->next, l2);
+            return l1;
         }
         else {
-            head = l2;
-            l2 = l2->next;
+            l2->next = mergeTwoLists(l1, l2->next);
+            return l2;
         }
-
-        ListNode* sortedPointer = head;
-
-        while (l1 != nullptr && l2 != nullptr) {
-            if (l1->val <= l2->val) {
-                sortedPointer->next = l1;
-                sortedPointer = l1;
-                l1 = l1->next;
-            }
-            else {
-                sortedPointer->next = l2;
-                sortedPointer = l2;
-                l2 = l2->next;
-            }
-        }
-
-        if (l1 == nullptr && l2 != nullptr)
-            sortedPointer->next = l2;
-        else if (l1 != nullptr && l2 == nullptr)
-            sortedPointer->next = l1;
-
-        return head;
     }
 };
 
@@ -86,12 +61,14 @@ int main() {
     std::cout << "Enter the numbers of first sorted linked list." << std::endl;
     std::getline(std::cin, line);
     std::istringstream stream1(line);
-    while (stream1 >> number)
+
+    while(stream1 >> number)
         head1 = Solution::insert(head1, number);
 
-    std::cout << "Enter the numbers of second sorted linked list." << std::endl;
+    std::cout << "Enter the numbers of second linked list." << std::endl;
     std::getline(std::cin, line);
-    std::istringstream stream2(line);
+    std::istringstream stream2 (line);
+
     while(stream2 >> number)
         head2 = Solution::insert(head2, number);
 
