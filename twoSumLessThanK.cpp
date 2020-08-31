@@ -16,7 +16,7 @@ class Solution {
 public:
     static int twoSumLessThanK(vector<int>& A, int K) {
         int n = A.size();
-        int sum = 0;
+        int sum = -1;
         if (n == 0) return sum;
 
         sort(A.begin(), A.end());
