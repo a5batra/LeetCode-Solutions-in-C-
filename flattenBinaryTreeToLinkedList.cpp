@@ -34,7 +34,7 @@ public:
             if (curr->right != nullptr) s.push(curr->right);
             if (curr->left != nullptr) s.push(curr->left);
 
-            if (s.empty()) {
+            if (!s.empty()) {
                 curr->right = s.top();
             }
             curr->left = nullptr;
