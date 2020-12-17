@@ -12,6 +12,8 @@
 #include <iostream>
 #include <string>
 
+using std::string;
+
 class WordDictionary {
     struct TrieNode {
         char val;
