@@ -38,6 +38,7 @@ public:
                 }
                 else {
                     dp[i][j] = min(1 + dp[i - 1][j - 1], min(1 + dp[i][j - 1], 1 + dp[i - 1][j]));
+                    // replace: 1 + dp[i - 1][j - 1], delete: 1 + dp[i][j - 1], insert: 1 + dp[i - 1][j]
                 }
             }
         }
