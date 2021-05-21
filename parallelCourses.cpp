@@ -24,7 +24,6 @@ public:
         for (vector<int>& r : relations) {
             int u = r[0] - 1, v = r[1] - 1;
             g[u].push_back(v);
-            g[v].push_back(u);
         }
         return g;
     }
